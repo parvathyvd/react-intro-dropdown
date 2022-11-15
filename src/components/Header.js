@@ -9,20 +9,21 @@ import calendar from "../images/icon-calendar.svg";
 import arrowDown from "../images/icon-arrow-down.svg";
 
 const Header = () => {
-  const [menuToggle, setMenuToggle] = useState(true);
-  const [subMenuToggle, setSubMenuToggle] = useState(false);
-  const [activeMenu, setActiveMenu] = useState("");
+  const [featureOpen, setFeatureOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const onCloseHandler = () => {
-    setMenuToggle(false);
+    setOpen(false);
   };
-  const onOpenHandler = () => {
-    setMenuToggle(true);
+  const onOpenHandler = (e) => {
+    setOpen(true);
   };
-  const onSubMenuToggle = (e) => {
-    console.log(e.target.dataset.id);
-    setActiveMenu(e.target.dataset.id);
-    setSubMenuToggle(true);
+  const onFeatureOpen = (e) => {
+    setFeatureOpen((prev) => !prev);
+  };
+  const onComapnyOpen = (e) => {
+    setCompanyOpen((prev) => !prev);
   };
 
   return (
@@ -30,27 +31,25 @@ const Header = () => {
       <figure className="logo">
         <img src={logo} alt="logo" />
       </figure>
-      <figure className="mobile-menu-icon open">
+      <figure className="mobile-menu-icon">
         <img src={hamburger} alt="menu" onClick={onOpenHandler} />
       </figure>
-      {menuToggle && (
+      {open && (
         <nav className="navigation">
           <figure className="mobile-menu-icon close">
             <img src={close} onClick={onCloseHandler} alt="close" />
           </figure>
           <ul className="nav-main">
             <li className="hasInner">
-              <a onClick={onSubMenuToggle} data-id="1">
+              <a onClick={onFeatureOpen} data-id="1">
                 Features
                 <img
-                  className={`arrow ${
-                    subMenuToggle && activeMenu == 1 && "rotate"
-                  }`}
+                  className={`arrow ${featureOpen && "rotate"}`}
                   src={arrowDown}
                   alt="arrowDown"
                 />
               </a>
-              {subMenuToggle && activeMenu == 1 && (
+              {featureOpen && (
                 <ul className="nav-sub">
                   <li>
                     <a href="#">
@@ -80,17 +79,15 @@ const Header = () => {
               )}
             </li>
             <li className="hasInner">
-              <a onClick={onSubMenuToggle} data-id="2">
+              <a onClick={onComapnyOpen} data-id="2">
                 Company
                 <img
-                  className={`arrow ${
-                    subMenuToggle && activeMenu == 2 && "rotate"
-                  }`}
+                  className={`arrow ${companyOpen && "rotate"}`}
                   src={arrowDown}
                   alt="arrowDown"
                 />
               </a>
-              {subMenuToggle && activeMenu == 2 && (
+              {companyOpen && (
                 <ul className="nav-sub">
                   <li>
                     <a href="#">History</a>

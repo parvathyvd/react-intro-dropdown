@@ -75,23 +75,23 @@ h1{
 }
 .navigation{
   position: fixed;
-  top:0;
+  top: 0%;
   right: 0;
   bottom: 0;
   width: 60vw;
   min-height: 100vh;
   background: #fff;
+  padding: 8rem 2rem 1rem;
+    color: var(--Medium-Gray);
 }
+
+
 .mobile-menu-icon{
   position: absolute;
   top: 2rem;
   right: 2rem;
 }
 
-.navigation{
-  padding: 8rem 2rem 1rem;
-  color: var(--Medium-Gray);
-}
 .navigation ul {
   list-style: none;
   display: flex;
