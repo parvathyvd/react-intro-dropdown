@@ -75,16 +75,21 @@ h1{
 }
 .navigation{
   position: fixed;
-  top: 0%;
+  top: 100%;
   right: 0;
   bottom: 0;
   width: 60vw;
   min-height: 100vh;
-  background: #fff;
+  background: transparent;
   padding: 8rem 2rem 1rem;
     color: var(--Medium-Gray);
+    z-index: 4;
 }
-
+.navigation.open{
+  top: 0%;
+    background: #fff;
+    z-index: 45;
+}
 
 .mobile-menu-icon{
   position: absolute;

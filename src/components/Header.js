@@ -11,13 +11,20 @@ import arrowDown from "../images/icon-arrow-down.svg";
 const Header = () => {
   const [featureOpen, setFeatureOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const onCloseHandler = () => {
     setOpen(false);
+    const navi = document.querySelector(".navigation");
+    navi.classList.remove("open");
   };
   const onOpenHandler = (e) => {
     setOpen(true);
+
+    const navi = document.querySelector(".navigation");
+    console.log(navi);
+
+    navi.classList.toggle("open");
   };
   const onFeatureOpen = (e) => {
     setFeatureOpen((prev) => !prev);
@@ -34,8 +41,8 @@ const Header = () => {
       <figure className="mobile-menu-icon">
         <img src={hamburger} alt="menu" onClick={onOpenHandler} />
       </figure>
-      {open && (
-        <nav className="navigation">
+      <nav className="navigation">
+        <>
           <figure className="mobile-menu-icon close">
             <img src={close} onClick={onCloseHandler} alt="close" />
           </figure>
@@ -119,8 +126,8 @@ const Header = () => {
               </li>
             </ul>
           </div>
-        </nav>
-      )}
+        </>
+      </nav>
     </header>
   );
 };
